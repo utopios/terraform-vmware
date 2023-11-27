@@ -1,5 +1,19 @@
+
+## Commande terraform 
+
+```bash
+terraform init
+``` 
+
+```bash
+terraform plan
+```
+
+
 ## Commande avec fichier de valeurs des variables
 tarraform plan -var-file="file_vars_value_tfvars"
+
+
 
 ## Ordre de priorité des valeurs variables 
 
