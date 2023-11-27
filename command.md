@@ -30,3 +30,8 @@ https://developer.hashicorp.com/terraform/language/functions
 
 ## Autre possibilité de for 
 https://developer.hashicorp.com/terraform/language/expressions/for
+
+
+## Lien vers provider vmware 
+
+https://registry.terraform.io/providers/hashicorp/vsphere/latest
