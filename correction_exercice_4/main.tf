@@ -20,3 +20,7 @@ output "size_list" {
   value = length(var.names)
 }
 
+output "from_template" {
+  value = [for s in var.names : templatefile("${path.module}/example.tpl", {name = s})]
+}
+
