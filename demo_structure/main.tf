@@ -4,6 +4,8 @@ variable "demo_condition" {
     default = true
 }
 
+
+
 variable "list_of_strings" {
   description = "A list of strings"
   type        = list(string)
