@@ -31,3 +31,20 @@ provider "vsphere" {
     vsphere_server = var.vsphere_server_address
     allow_unverified_ssl = true
 }
+
+data "vsphere_datacenter" "datacenter" {
+  name = "Datacenter"
+}
+
+data "vsphere_network" "network" {
+  name = "VM Network"
+  datacenter_id = data.vsphere_datacenter.datacenter.id
+}
+
+output "information_network_type" {
+  value = data.vsphere_network.network.type
+}
+
+output "information_network_id" {
+  value = data.vsphere_network.network.id
+}
