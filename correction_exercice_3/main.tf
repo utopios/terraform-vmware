@@ -7,6 +7,15 @@ variable "environment_variable" {
   }
 }
 
+variable "all_cases" {
+  description = "mapping all cases"
+  type = map(string)
+  default = {
+    "small" = "micro"
+    "large" = "big"
+  }
+}
+
 
 variable "type_instance" {
   description = "the type of instance"
@@ -27,7 +36,8 @@ variable "type_instance" {
 # }
 
 locals {
-  size_instance = var.type_instance == "small" ? "micro" : "big"
+  # size_instance = var.type_instance == "small" ? "micro" : "big"
+  size_instance = var.all_cases[var.type_instance]
 }
 
 
