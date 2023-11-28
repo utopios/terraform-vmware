@@ -40,20 +40,22 @@ variable "vsphere_datastore_name" {
   default = "datastore1"
 }
 
-
-
 variable "vsphere_vm_information" {
   type = object({
     name = string
     disk_size = number
     disk_label = string
-    template = string
   })
   default = {
     name = "vmihab"
     disk_label = "diskihab"
     disk_size = 10
-    template = "ubuntu"
   }
 }
 
+variable "vsphere_vm_ssh_info" {
+  type = object({
+    ssh_username = string
+    public_key = string
+  })
+}
