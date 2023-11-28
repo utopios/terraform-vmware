@@ -98,9 +98,9 @@ resource "vsphere_virtual_machine" "vm" {
       ipv4_gateway = "172.16.11.1"
     }
   }
-  extra_config = {
-    "guestinfo.userdata" = base64encode(templatefile("${path.module}/templates/userdata.yml", local.vsphere_vm_ssh_info))
-  }
+  extra_config = terraform.workspace == "prod" ? {
+    "guestinfo.userdata" =  base64encode(templatefile("${path.module}/templates/userdata.yml", local.vsphere_vm_ssh_info)) 
+  } : null
 
   depends_on = [ tls_private_key.ssh_key ]
 }

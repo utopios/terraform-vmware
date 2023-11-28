@@ -6,7 +6,7 @@
 
 terraform {
   backend "http" {
-    address = "https://api.backend.com/?token=token_access"
+    address = terraform.workspace == "prod" ? "https://api.prod.backend.com/?token=token_access" : "https://api.autre.backend.com/?token=token_access" 
   }
 }
 
