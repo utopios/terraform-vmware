@@ -28,3 +28,21 @@ resource "vsphere_host_virtual_switch" "standard_switch" {
     active_nics = var.vsphere_vswitch_information.active_nics
     # d'autres configurations possible voir doc vsphere ...
 }
+
+resource "vsphere_host_port_group" "port_group" {
+  for_each = var.vsphere_port_group_list
+  name = each.value
+  host_system_id = data.vsphere_host.host.id
+  virtual_switch_name = var.vsphere_vswitch_information.name
+
+  # d'autres configurations possible voir doc vsphere ...
+}
+
+resource "vsphere_host_port_group" "extra_port_group" {
+  count = var.vsphere_port_group_extra_group ? 1 : 0
+  name = "extra_port_group"
+  host_system_id = data.vsphere_host.host.id
+  virtual_switch_name = var.vsphere_vswitch_information.name
+
+  # d'autres configurations possible voir doc vsphere ...
+}

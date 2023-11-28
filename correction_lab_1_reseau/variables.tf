@@ -47,3 +47,15 @@ variable "vsphere_vswitch_information" {
     active_nics = [ "vmnic0" ]
   }
 }
+
+variable "vsphere_port_group_list" {
+  description = "List of port group"
+  type = list(string)
+  default = [ "port_group_1", "port_group_2", "port_group_3" ]
+}
+
+variable "vsphere_port_group_extra_group" {
+  description = "extra group port"
+  type = bool
+  default = false
+}
