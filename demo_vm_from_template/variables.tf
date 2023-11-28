@@ -53,9 +53,9 @@ variable "vsphere_vm_information" {
   }
 }
 
-variable "vsphere_vm_ssh_info" {
-  type = object({
-    ssh_username = string
-    public_key = string
-  })
-}
+# variable "vsphere_vm_ssh_info" {
+#   type = object({
+#     ssh_username = string
+#     public_key = string
+#   })
+# }

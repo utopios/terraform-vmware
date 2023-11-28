@@ -1,3 +1,24 @@
+provider "tls" {
+  
+}
+
+resource "tls_private_key" "ssh_key" {
+  algorithm = "RSA"
+  rsa_bits = 2048
+}
+
+resource "local_file" "private_key" {
+  content = tls_private_key.ssh_key.private_key_pem
+  filename = "${path.module/ssh_key}"
+}
+
+locals {
+  vsphere_vm_ssh_info = {
+    ssh_username = "admin"
+    public_key = tls_private_key.ssh_key.public_key_openssh
+  }
+}
+
 provider "vsphere" {
     user = var.vsphere_user
     password = var.vsphere_password
@@ -64,6 +85,8 @@ resource "vsphere_virtual_machine" "vm" {
     }
   }
   extra_config = {
-    "guestinfo.userdata" = base64encode(templatefile("${path.module}/templates/userdata.yaml"), var.vsphere_vm_ssh_info)
+    "guestinfo.userdata" = base64encode(templatefile("${path.module}/templates/userdata.yaml"), local.vsphere_vm_ssh_info)
   }
+
+  depends_on = [ tls_private_key.ssh_key ]
 }
