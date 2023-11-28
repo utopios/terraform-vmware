@@ -26,7 +26,9 @@ provider "vsphere" {
 }
 
 module "demo_module" {
-  source = "../demo_module"
+  # source = "../demo_module"
+  # source = "orsys.com/demo_module"
+  source = "git::https://github.com/utopios/demo_module_terraform_vmware.git"
   vsphere_datacenter_name = "Datacenter"
 }
 
