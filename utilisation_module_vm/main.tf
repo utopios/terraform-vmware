@@ -67,7 +67,7 @@ data "vsphere_host" "host" {
 }
 
 module "custom_vm" {
-    source = "../correction_lab_module_vm"
+    source = "git::https://github.com/utopios/module_vm_terraform_vmware"
     vsphere_datacenter_id = data.vsphere_datacenter.datacenter.id
     vsphere_resource_pool_id = data.vsphere_host.host.resource_pool_id
     vsphere_datastore_id = data.vsphere_datastore.datastore.id
