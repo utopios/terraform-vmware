@@ -22,7 +22,7 @@ resource "tls_private_key" "ssh_key" {
 
 resource "local_file" "private_key" {
   content = tls_private_key.ssh_key.private_key_pem
-  filename = "${path.module/ssh_key}"
+  filename = "${path.module}/ssh_key"
 }
 
 locals {
@@ -98,7 +98,7 @@ resource "vsphere_virtual_machine" "vm" {
     }
   }
   extra_config = {
-    "guestinfo.userdata" = base64encode(templatefile("${path.module}/templates/userdata.yaml"), local.vsphere_vm_ssh_info)
+    "guestinfo.userdata" = base64encode(templatefile("${path.module}/templates/userdata.yml", local.vsphere_vm_ssh_info))
   }
 
   depends_on = [ tls_private_key.ssh_key ]

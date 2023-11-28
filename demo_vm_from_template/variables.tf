@@ -45,11 +45,13 @@ variable "vsphere_vm_information" {
     name = string
     disk_size = number
     disk_label = string
+    template = string
   })
   default = {
     name = "vmihab"
     disk_label = "diskihab"
     disk_size = 10
+    template = "ubuntu"
   }
 }
 
