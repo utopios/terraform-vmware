@@ -1,3 +1,16 @@
+terraform {
+  required_providers {
+    vsphere = {
+      source = "hashicorp/vsphere"
+      version = "2.5.1"
+    }
+    tls = {
+      source = "hashicorp/tls"
+      version = "4.0.5"
+    }
+  }
+}
+
 provider "tls" {
   
 }
