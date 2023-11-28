@@ -50,7 +50,7 @@ variable "vsphere_vswitch_information" {
 
 variable "vsphere_port_group_list" {
   description = "List of port group"
-  type = list(string)
+  type = set(string)
   default = [ "port_group_1", "port_group_2", "port_group_3" ]
 }
 
